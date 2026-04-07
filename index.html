@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexTech Project</title>
+
+<style>
+body{
+margin:0;
+padding:20px;
+font-family:Arial, sans-serif;
+background:#0f172a;
+color:white;
+}
+
+.grid-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.celula{
+background:#1e293b;
+padding:15px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,255,255,0.2);
+}
+
+/* LOGO */
+.logo{
+width:150px;
+height:150px;
+background:linear-gradient(135deg,#00ffff,#0066ff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+font-weight:bold;
+border-radius:20px;
+box-shadow:0 0 25px cyan;
+}
+
+/* VIDEO LOOP */
+.video-loop{
+height:200px;
+border-radius:15px;
+overflow:hidden;
+position:relative;
+background:black;
+}
+
+.video-loop::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:linear-gradient(45deg,#00ffff,#0066ff,#00ffff);
+animation:mover 6s linear infinite;
+opacity:0.4;
+}
+
+@keyframes mover{
+0%{transform:translate(-25%,-25%) rotate(0deg);}
+100%{transform:translate(-25%,-25%) rotate(360deg);}
+}
+
+/* LINKS */
+.links-lista{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.links-lista a{
+color:cyan;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* CONTEUDO */
+#display-area{
+min-height:200px;
+padding:10px;
+border:2px dashed cyan;
+border-radius:10px;
+}
+
+/* QR */
+.qr-container{
+grid-column:span 2;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid-container">
+
+<div class="celula">
+<h3>Logo</h3>
+<div class="logo">NEXTECH</div>
+</div>
+
+<div class="celula">
+<h3>Vídeo em Loop</h3>
+<div class="video-loop"></div>
+</div>
+
+<div class="celula">
+<h3>Menu</h3>
+<div class="links-lista">
+<a onclick="mostrar('imagem')">1. Imagem</a>
+<a onclick="mostrar('fato')">2. Fato Histórico</a>
+<a onclick="mostrar('sites')">3. Sugestão de Sites</a>
+<a onclick="mostrar('youtube')">4. Vídeo YouTube</a>
+<a onclick="mostrar('form')">5. Formulário</a>
+</div>
+</div>
+
+<div class="celula">
+<h3>Conteúdo</h3>
+<div id="display-area">Clique em um link ao lado.</div>
+</div>
+
+<div class="celula qr-container">
+<h3>QR Code do Projeto</h3>
+
+<!-- ✅ AGORA COM SEU LINK -->
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://daniel.github.io/projeto">
+
+</div>
+
+</div>
+
+<script>
+
+function mostrar(tipo){
+
+const display=document.getElementById("display-area");
+
+switch(tipo){
+
+case 'imagem':
+display.innerHTML=
+'<img src="https://images.unsplash.com/photo-1518770660439-4636190af475" style="width:100%; border-radius:10px;">';
+break;
+
+case 'fato':
+display.innerHTML=
+"Em 2007, a Apple lançou o primeiro iPhone apresentado por Steve Jobs, revolucionando o mercado de smartphones.";
+break;
+
+case 'sites':
+display.innerHTML=
+'<iframe src="https://pt.wikipedia.org" width="100%" height="200"></iframe>';
+break;
+
+case 'youtube':
+display.innerHTML=
+'<iframe width="100%" height="200" src="https://www.youtube.com/embed/TM6ezL7VKck" allowfullscreen></iframe>';
+break;
+
+case 'form':
+display.innerHTML=
+"Nome: Lucas Almeida<br>"+
+"Endereço: Rua da Tecnologia, 456<br>"+
+"Telefone: (11) 97777-6666<br>"+
+"Email: lucas@email.com";
+break;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
